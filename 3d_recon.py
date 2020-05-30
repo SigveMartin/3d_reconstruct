@@ -8,7 +8,7 @@ import PIL.Image
 # Camera calibration
 #============================================
 #Define size of chessboard target.
-chessboard_size = (7,5)
+chessboard_size = (7,6)
 
 #Define arrays to save detected points
 obj_points = [] #3D points in real world space
@@ -33,11 +33,12 @@ for image_path in tqdm(calibration_paths):
         #define criteria for subpixel accuracy
         criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
         #refine corner location (to subpixel accuracy) based on criteria.
-        cv2.cornerSubPix(gray_image, corners, (5,5), (-1,-1), criteria)
+        cv2.cornerSubPix(gray_image, corners, (11,11), (-1,-1), criteria)
         obj_points.append(objp)
         img_points.append(corners)
 
-#Calibrate camera
+#Calibrate cameranp.save("./camera_params/ret", ret)np.save("./camera_params/ret", ret)
+
 ret, K, dist, rvecs, tvecs = cv2.calibrateCamera(obj_points, img_points,gray_image.shape[::-1], None, None)
 #Save parameters into numpy file
 np.save("./camera_params/ret", ret)
