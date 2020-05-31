@@ -65,8 +65,8 @@ K = np.load('./camera_params/K.npy')
 dist = np.load('./camera_params/dist.npy')
 
 #Specify image paths
-img_path1 = './reconstruct_this/left2.jpg'
-img_path2 = './reconstruct_this/right2.jpg'
+img_path1 = './reconstruct_this/left21.jpg'
+img_path2 = './reconstruct_this/right21.jpg'
 
 #Load pictures
 img_1 = cv2.imread(img_path1)
